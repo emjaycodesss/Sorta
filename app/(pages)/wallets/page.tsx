@@ -4,7 +4,7 @@
  */
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Plus, Wallet, Bitcoin, Ethereum, Coins } from "lucide-react"
+import { Plus, Wallet, Bitcoin, Coins, Zap } from "lucide-react"
 
 // Mock data for development - will be replaced with Supabase queries
 const mockWallets = [
@@ -16,7 +16,7 @@ const mockWallets = [
 
 const chainIcons = {
   BTC: Bitcoin,
-  ETH: Ethereum,
+  ETH: Zap, // Using Zap as a substitute for Ethereum
   SOL: Coins,
   HYPE: Wallet,
 }
