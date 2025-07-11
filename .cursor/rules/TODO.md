@@ -11,34 +11,34 @@ This document outlines the development tasks required to build the Sorta applica
 
 The goal of this phase is to create the project structure, install dependencies, and establish a connection to the database.
 
--   [ ] **Initialize Git Repository**
-    -   [ ] `git init` in the project folder.
-    -   [ ] Create an initial commit.
-    -   [ ] Create a repository on GitHub/GitLab and push the initial commit.
+-   [x] **Initialize Git Repository**
+    -   [x] `git init` in the project folder.
+    -   [x] Create an initial commit.
+    -   [x] Create a repository on GitHub/GitLab and push the initial commit.
 
--   [ ] **Next.js Project Setup**
-    -   [ ] Initialize a new Next.js 14+ project with TypeScript and Tailwind CSS: `npx create-next-app@latest --typescript --tailwind --eslint .`
-    -   [ ] Clean up the default boilerplate code from the main page.
+-   [x] **Next.js Project Setup**
+    -   [x] Initialize a new Next.js 14+ project with TypeScript and Tailwind CSS: `npx create-next-app@latest --typescript --tailwind --eslint .`
+    -   [x] Clean up the default boilerplate code from the main page.
 
 -   [ ] **UI & Styling Setup**
-    -   [ ] Initialize `shadcn/ui`: `npx shadcn-ui@latest init`
-    -   [ ] Apply the custom theme: `npx shadcn@latest add https://tweakcn.com/r/themes/cmcyfvy3l000004ju9n78d6kw`
-    -   [ ] Install core `shadcn/ui` components needed for the layout (e.g., `button`, `card`, `input`, `dropdown-menu`).
+    -   [x] Initialize `shadcn/ui`: `npx shadcn-ui@latest init`
+    -   [x] Apply the custom theme: `npx shadcn@latest add https://tweakcn.com/r/themes/cmcyfvy3l000004ju9n78d6kw`
+    -   [x] Install core `shadcn/ui` components needed for the layout (e.g., `button`, `card`, `input`, `dropdown-menu`).
 
 -   [ ] **Theme (Light/Dark Mode) Setup**
-    -   [ ] Install the `next-themes` package: `npm install next-themes`
-    -   [ ] Create a `ThemeProvider` component to wrap your application.
-    -   [ ] Create a `ThemeToggle` component (e.g., a button with a moon/sun icon) that allows users to switch modes.
-    -   [ ] Add the `ThemeProvider` to your root `layout.tsx`.    
+    -   [x] Install the `next-themes` package: `npm install next-themes`
+    -   [x] Create a `ThemeProvider` component to wrap your application.
+    -   [x] Create a `ThemeToggle` component (e.g., a button with a moon/sun icon) that allows users to switch modes.
+    -   [x] Add the `ThemeProvider` to your root `layout.tsx`.    
 
--   [ ] **Supabase Setup**
-    -   [ ] Create a new project on the [Supabase website](https://supabase.com/).
-    *   [ ] In the Supabase SQL Editor, run the `CREATE TABLE` scripts for `projects`, `wallets`, and `project_wallets`.
+-   [x] **Supabase Setup**
+    -   [x] Create a new project on the [Supabase website](https://supabase.com/).
+    *   [x] In the Supabase SQL Editor, run the `CREATE TABLE` scripts for `projects`, `wallets`, and `project_wallets`.
         *   *Crucial:* Ensure the `status` column in the `projects` table has a `DEFAULT` value of `'Pending'`.
         *   *Crucial:* Set up the foreign key relationships correctly.
-    -   [ ] Install the Supabase client library: `npm install @supabase/supabase-js`
-    -   [ ] Create a `.env.local` file in the root of your Next.js project.
-    -   [ ] Add your Supabase Project URL and Anon Key to `.env.local`.
+    -   [x] Install the Supabase client library: `npm install @supabase/supabase-js`
+    -   [x] Create a `.env.local` file in the root of your Next.js project.
+    -   [x] Add your Supabase Project URL and Anon Key to `.env.local`.
 
 ---
 
