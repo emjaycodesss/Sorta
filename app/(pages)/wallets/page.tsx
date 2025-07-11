@@ -40,14 +40,8 @@ export default function WalletsPage() {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Wallets</h1>
-          <p className="text-muted-foreground">
-            Manage your crypto wallets organized by blockchain
-          </p>
-        </div>
+      {/* Add Wallet Button */}
+      <div className="flex justify-end">
         <Button>
           <Plus className="mr-2 h-4 w-4" />
           Add Wallet
