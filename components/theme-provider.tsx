@@ -13,7 +13,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       attribute="class"
       defaultTheme="system"
       enableSystem
-      disableTransitionOnChange
+      // Enable smooth transitions when theme changes
+      disableTransitionOnChange={false}
     >
       {children}
     </NextThemesProvider>

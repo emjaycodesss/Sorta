@@ -50,6 +50,9 @@
   --shadow-2xl: 2px 2px 0px 0px hsl(200 18.0723% 51.1765% / 0.28);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+  
+  /* RGB values for ripple effect */
+  --primary-rgb: 99, 102, 241;
 }
 
 .dark {
@@ -97,6 +100,9 @@
   --shadow-lg: 2px 2px 0px 0px hsl(200.0000 17.6471% 30.0000% / 0.11), 2px 4px 6px -1px hsl(200.0000 17.6471% 30.0000% / 0.11);
   --shadow-xl: 2px 2px 0px 0px hsl(200.0000 17.6471% 30.0000% / 0.11), 2px 8px 10px -1px hsl(200.0000 17.6471% 30.0000% / 0.11);
   --shadow-2xl: 2px 2px 0px 0px hsl(200.0000 17.6471% 30.0000% / 0.28);
+  
+  /* RGB values for ripple effect - dark theme */
+  --primary-rgb: 147, 51, 234;
 }
 
 @theme inline {
@@ -159,5 +165,41 @@
   body {
     @apply bg-background text-foreground;
     letter-spacing: var(--tracking-normal);
+    /* Enable smooth transitions for theme changes */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Remove default button focus styles that cause blue highlights */
+  button {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  /* View Transitions API support */
+  @supports (view-transition-name: none) {
+    /* Enable view transitions for the entire app */
+    html {
+      view-transition-name: none;
+    }
+    
+    /* Ensure smooth view transitions */
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: 0.6s;
+      animation-timing-function: ease-in-out;
+    }
+  }
+  
+  /* Only set z-index where absolutely necessary. Remove global z-index from main content. */
+  button, a, input, select, textarea {
+    position: relative;
+    z-index: 70;
+  }
+  
+  /* Ensure icons and text stay above overlay */
+  svg, span, p, h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    z-index: 65;
   }
 }

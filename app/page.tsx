@@ -1,11 +1,16 @@
 /**
  * Sorta - NFT Whitelist Tracker
- * Main page that redirects to dashboard
+ * Main page that redirects based on authentication status
  */
 import { redirect } from "next/navigation"
+import { getCurrentSession } from "@/lib/auth-server"
 
-export default function Home() {
-  // Redirect to dashboard for now
-  // Later this will check authentication and redirect accordingly
-  redirect("/dashboard")
+export default async function Home() {
+  const session = await getCurrentSession()
+  
+  if (session) {
+    redirect("/dashboard")
+  } else {
+    redirect("/auth")
+  }
 }

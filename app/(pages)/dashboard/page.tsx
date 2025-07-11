@@ -66,7 +66,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Quick Actions */}
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="max-w-xl mx-auto">
         <Card>
           <CardHeader>
             <CardTitle>Quick Actions</CardTitle>
@@ -74,53 +74,24 @@ export default function DashboardPage() {
               Get started with your NFT tracking
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <Link href="/wallets">
-              <Button className="w-full justify-start">
-                <Wallet className="mr-2 h-4 w-4" />
-                Manage Wallets
-              </Button>
-            </Link>
-            <Button variant="outline" className="w-full justify-start">
-              <Plus className="mr-2 h-4 w-4" />
-              Add New Project
-            </Button>
-            <Link href="/calendar">
-              <Button variant="outline" className="w-full justify-start">
-                <Calendar className="mr-2 h-4 w-4" />
-                View Calendar
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Getting Started</CardTitle>
-            <CardDescription>
-              Follow these steps to set up your tracker
-            </CardDescription>
-          </CardHeader>
           <CardContent>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <div className="h-6 w-6 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center font-bold">
-                  1
-                </div>
-                <span className="text-sm">Add your crypto wallets</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="h-6 w-6 rounded-full bg-muted text-muted-foreground text-xs flex items-center justify-center font-bold">
-                  2
-                </div>
-                <span className="text-sm text-muted-foreground">Add NFT projects to track</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="h-6 w-6 rounded-full bg-muted text-muted-foreground text-xs flex items-center justify-center font-bold">
-                  3
-                </div>
-                <span className="text-sm text-muted-foreground">Monitor your calendar for mint dates</span>
-              </div>
+            <div className="flex flex-col gap-4">
+              <Link href="/wallets">
+                <Button className="w-full justify-start">
+                  <Wallet className="mr-2 h-4 w-4" />
+                  Manage Wallets
+                </Button>
+              </Link>
+              <Button variant="outline" className="w-full justify-start">
+                <Plus className="mr-2 h-4 w-4" />
+                Add New Project
+              </Button>
+              <Link href="/calendar">
+                <Button variant="outline" className="w-full justify-start">
+                  <Calendar className="mr-2 h-4 w-4" />
+                  View Calendar
+                </Button>
+              </Link>
             </div>
           </CardContent>
         </Card>
