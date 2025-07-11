@@ -1,0 +1,44 @@
+---
+alwaysApply: true
+---
+
+sorta-app/
+├── .env.local              # <-- VERY IMPORTANT: For your Supabase keys. Not committed to Git.
+├── .gitignore              # Specifies what files Git should ignore.
+├── README.md               # Your project's main documentation.
+├── TODO.md                 # Your development task list.
+├── tech-stack.mdc          # Your tech stack documentation.
+├── next.config.mjs         # Next.js configuration.
+├── package.json            # Project dependencies and scripts.
+├── tailwind.config.ts      # Tailwind CSS configuration.
+├── tsconfig.json           # TypeScript configuration.
+├── components.json         # shadcn/ui configuration.
+│
+├── public/                 # For static assets like images, fonts, and favicons.
+│   └── favicon.ico
+│
+└── src/                    # The main source code for your application.
+    ├── app/                # The Next.js App Router directory.
+    │   ├── (pages)/        # A route group for your main authenticated pages.
+    │   │   ├── dashboard/
+    │   │   │   └── page.tsx      # The UI for your main dashboard.
+    │   │   ├── wallets/
+    │   │   │   └── page.tsx      # The UI for the wallet management page.
+    │   │   ├── calendar/
+    │   │   │   └── page.tsx      # The UI for the calendar page.
+    │   │   └── layout.tsx    # A shared layout for the pages (e.g., with a sidebar/navbar).
+    │   │
+    │   ├── layout.tsx        # The ROOT layout for the entire application.
+    │   └── page.tsx          # The landing page (can redirect to dashboard).
+    │
+    ├── components/         # Where you store all your React components.
+    │   ├── ui/               # Components added by shadcn/ui (Button, Card, etc.). Don't edit these directly.
+    │   └── custom/           # YOUR OWN reusable components.
+    │       ├── ProjectDataTable.tsx
+    │       ├── QuickAddForm.tsx
+    │       └── StatusBadge.tsx
+    │
+    └── lib/                  # For utility functions, helper code, and configurations.
+        ├── supabase.ts       # Initializes and exports the Supabase client. (CRITICAL)
+        ├── utils.ts          # General utility functions (e.g., date formatting, cn utility).
+        └── types.ts          # Central place for all your custom TypeScript types (Project, Wallet, etc.).

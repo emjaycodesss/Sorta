@@ -1,0 +1,119 @@
+---
+alwaysApply: true
+---
+
+# Sorta: NFT Whitelist Tracker
+
+## 1. Introduction
+
+Sorta is a web application designed for NFT enthusiasts who need a streamlined way to track their whitelisted projects. With the sheer volume of new NFT projects launching daily, it's easy to lose track of mint dates, whitelisted wallets, and other crucial details. Sorta aims to solve this problem by providing a centralized dashboard to manage all your NFT whitelist information.
+
+## 2. Key Features
+
+### 2.1. Dashboard & Homepage
+
+The dashboard is the user's central hub, providing an at-a-glance overview and quick access to all functionalities.
+
+*   **Summary Cards:** Prominent display of key statistics:
+    *   Mints Today
+    *   Upcoming Mints (Next 7 Days)
+    *   Total Active Whitelists (`Pending` status)
+    *   Total Wallets Managed
+*   **Quick Add Form:** A simplified form on the dashboard to rapidly add a new project with core details (Project Name, Mint Date, Chain), allowing the user to add more details later.
+*   **Upcoming Mints Section:** A list or timeline view of projects with mints scheduled in the near future (e.g., next 7 days), sorted chronologically.
+*   **Comprehensive Project Table:** The main component of the dashboard will be an interactive and powerful data table displaying all projects.
+    *   **Search, Sort, and Filter:** Users can search for projects by name and filter by chain, status, or whitelist type (GTD/FCFS).
+    *   **Actionable Rows:** Each project row will have quick actions like 'Edit', 'Change Status', and 'Delete'.
+
+### 2.2. Project Management
+
+*   **Add/Edit Projects:** Users can add or edit NFT projects with detailed information.
+*   **Default Status:** When a new project is created, its status will automatically be set to **`Pending`**.
+*   **Project Details:**
+    *   Chain (e.g., BTC, ETH, SOL, HYPE)
+    *   Project Name
+    *   X (formerly Twitter) Account
+    *   Mint Date and Time (in the user's local timezone)
+    *   Mint Price
+    *   Total Supply
+    *   Launchpad
+    *   Whitelist Type (Guaranteed - GTD or First-Come, First-Served - FCFS)
+    *   Notes
+*   **Status Updates:** Users can update the status of each project. The available statuses are:
+    *   **`Pending`**: The default status for all new and upcoming projects.
+    *   **`Minted`**: The user has successfully minted the NFT.
+    *   **`Will Pass`**: The user has decided not to mint this project.
+    *   **`Delayed`**: The mint has been postponed. The user can update the mint date/time or set it to "TBA".
+
+### 2.3. Wallet Management
+
+*   **Add and Organize Wallets:** Users can add multiple crypto wallets and group them by their respective blockchain networks.
+*   **Associate Wallets with Projects:** When adding or editing a project, users can select the whitelisted wallet(s) from a dropdown list. This list will also feature an option to quickly add a new wallet.
+
+### 2.4. Calendar View
+
+*   **Monthly Overview:** A calendar will display the names of projects scheduled to mint on any given day.
+*   **Calendar Navigation:** Users will be able to move between months using buttons.
+*   **Detailed Daily View:** Clicking on a specific day in the calendar will reveal a detailed timeline on the right side of the page. This timeline will show the precise minting times for all projects scheduled for that day.
+
+## 3. Technical Stack
+
+-   **Frontend:** Next.js
+-   **UI Library:** shadcn/ui with the [TweakCN theme](https://tweakcn.com/r/themes/cmcyfvy3l000004ju9n78d6kw)
+-   **Styling:** Tailwind CSS
+-   **Language:** TypeScript
+-   **Database and Storage:** Supabase
+
+## 4. Database Schema (Supabase)
+
+### `projects` table
+
+| column_name      | data_type                | notes                                                 |
+| ---------------- | ------------------------ | ----------------------------------------------------- |
+| id               | `uuid` (primary key)     |                                                       |
+| user_id          | `uuid` (foreign key)     | Links to the `users` table                            |
+| project_name     | `text`                   |                                                       |
+| chain            | `text`                   | e.g., 'BTC', 'ETH', 'SOL', 'HYPE'                     |
+| x_account        | `text`                   |                                                       |
+| mint_datetime    | `timestamp with time zone` | Stores the mint date and time                         |
+| mint_price       | `numeric`                |                                                       |
+| supply           | `integer`                |                                                       |
+| launchpad        | `text`                   |                                                       |
+| whitelist_type   | `text`                   | 'GTD' or 'FCFS'                                       |
+| notes            | `text`                   |                                                       |
+| status           | `text`                   | 'Pending', 'Minted', 'Will Pass', 'Delayed'. Defaults to 'Pending'. |
+| created_at       | `timestamp with time zone` |                                                       |
+
+### `wallets` table
+
+| column_name    | data_type            | notes                                  |
+| -------------- | -------------------- | -------------------------------------- |
+| id             | `uuid` (primary key) |                                        |
+| user_id        | `uuid` (foreign key) | Links to the `users` table             |
+| wallet_address | `text`               | The public address of the wallet       |
+| chain          | `text`               | e.g., 'BTC', 'ETH', 'SOL', 'HYPE'      |
+| created_at     | `timestamp with time zone` |                                        |
+
+### `project_wallets` table (Junction Table)
+
+| column_name | data_type            | notes                                   |
+| ----------- | -------------------- | --------------------------------------- |
+| id          | `uuid` (primary key) |                                         |
+| project_id  | `uuid` (foreign key) | Links to the `projects` table           |
+| wallet_id   | `uuid` (foreign key) | Links to the `wallets` table            |
+| created_at  | `timestamp with time zone` |                                         |
+
+## 5. Wallet Management
+
+### Supported Chains and Address Formats
+
+-   **Bitcoin (BTC) - Ordinals:** These are typically Taproot addresses, which start with `bc1p`.
+-   **Ethereum (ETH):** Standard Ethereum addresses are 42 characters long and start with `0x`.
+-   **Solana (SOL):** Solana addresses are base58 encoded and are typically between 32 and 44 characters long.
+-   **Hype:** The specific wallet format for the "Hype" chain is not readily available. For now, you can use a general text field for the address. It is recommended to research and validate the exact format once more information on this chain becomes available.
+
+## 6. Future Development
+
+-   **Authentication:** Implement user authentication and authorization using Supabase Auth.
+-   **Notifications:** Add email or in-app notifications to remind users of upcoming mints.
+-   **Analytics:** A dashboard to provide users with insights into their minting activities.

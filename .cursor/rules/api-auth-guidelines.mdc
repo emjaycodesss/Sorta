@@ -1,0 +1,17 @@
+---
+alwaysApply: true
+---
+# Project Rules: API Authentication & Validation Guidelines
+
+## 1. Goal
+
+This document outlines the **mandatory** rules and procedures for creating and modifying API endpoints within the Hearth App codebase ('src/pages/api/') and for interacting with these endpoints from the frontend or other backend services. The primary goals are to ensure **security**, **consistency**, and **maintainability** by standardizing how authentication, method validation, and request data validation are handled. Adherence to these guidelines is critical for preventing security vulnerabilities and ensuring predictable API behavior.
+
+**All new API endpoints and API calls (frontend or backend) MUST follow these rules**
+
+## 2. Core Principles
+
+* **Security First:** Authentication and validation are non-negotiable.
+* **Consistency:** Use the established utility functions and patterns.
+* **Leverage Utilities:** Utilize the provided higher-order functions and 'src/utils/auth/' for backend API endpoints, and the specific fetch
+* **Clear Separation:** API routes handle HTTP requests/responses. Frontend functions. Backend services may call shared logic directly or use specific helper API calls.
